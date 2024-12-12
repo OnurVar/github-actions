@@ -1,0 +1,28 @@
+name: Test Environment Variables
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test-env-vars:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print environment variables
+        env:
+          REPOSITORY_SECRET: ${{ secrets.REPOSITORY_SECRET }}
+          REPOSITORY_VAR: ${{ secrets.REPOSITORY_VAR }}
+          ENVIROMENT_SECRET: ${{ secrets.ENVIRONMENT_SECRET }}
+          ENVIRONMENT_VAR: ${{ secrets.ENVIRONMENT_VAR }}
+        run: |
+          echo "REPOSITORY_SECRET: $REPOSITORY_SECRET"
+          echo "REPOSITORY_VAR: $REPOSITORY_VAR"
+          echo "ENVIROMENT_SECRET: $ENVIROMENT_SECRET"
+          echo "ENVIRONMENT_VAR: $ENVIRONMENT_VAR"
