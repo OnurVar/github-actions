@@ -18,9 +18,9 @@ jobs:
       - name: Print environment variables
         env:
           REPOSITORY_SECRET: ${{ secrets.REPOSITORY_SECRET }}
-          REPOSITORY_VAR: ${{ secrets.REPOSITORY_VAR }}
+          REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
           ENVIROMENT_SECRET: ${{ secrets.ENVIRONMENT_SECRET }}
-          ENVIRONMENT_VAR: ${{ secrets.ENVIRONMENT_VAR }}
+          ENVIRONMENT_VAR: ${{ vars.ENVIRONMENT_VAR }}
         run: |
           echo "REPOSITORY_SECRET: $REPOSITORY_SECRET"
           echo "REPOSITORY_VAR: $REPOSITORY_VAR"
